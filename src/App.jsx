@@ -113,11 +113,12 @@ export default function App() {
 <View
   as="form"
   style={{
-    marginTop: "2rem",
-            backgroundColor: "#fff",
-            padding: "2rem",
-            borderRadius: "12px",
-            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+    maxWidth: "600px",
+    margin: "2rem auto",
+    padding: "2rem",
+    backgroundColor: "#f9f9f9",
+    borderRadius: "12px",
+    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
   }}
   onSubmit={createNote}
 >
@@ -149,7 +150,7 @@ export default function App() {
       variation="quiet"
       required
       style={{
-            fontSize: "1rem",
+           fontSize: "1rem",
                 padding: "10px",
                 borderRadius: "8px",
                 border: "1px solid #ccc",
@@ -188,12 +189,12 @@ export default function App() {
               }}
             >
               Penny!
-            </Button>
+      </Button>
   </Flex>
 </View>
 
           <Divider />
-          <Heading level={2}>Current Notes</Heading>
+          <Heading level={2}>Published Thoughts</Heading>
           <Grid
             margin="3rem 0"
             autoFlow="column"
