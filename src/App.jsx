@@ -99,96 +99,172 @@ export default function App() {
           width="70%"
           margin="0 auto"
         >
-          <Heading level={1}
-  style={{
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: "2.5rem",
-    color: "#333",
-    marginBottom: "1.5rem",
-  }}
->
-  Penny Thoughts
-</Heading>
-<View
-  as="form"
-  style={{
-    maxWidth: "600px",
-    margin: "2rem auto",
-    padding: "2rem",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "12px",
-    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-  }}
-  onSubmit={createNote}
->
-  <Flex
-    direction="column"
-    justifyContent="center"
-    gap="1.5rem"
-    padding="1.5rem"
-  >
-    <TextField
-      name="name"
-      placeholder="Note Name"
-      label="Note Name"
-      labelHidden
-      variation="quiet"
-      required
-      style={{
-        fontSize: "1rem",
-        padding: "10px",
-        borderRadius: "8px",
-        border: "1px solid #ccc",
-      }}
-    />
-    <TextField
-      name="description"
-      placeholder="Note Description"
-      label="Note Description"
-      labelHidden
-      variation="quiet"
-      required
-      style={{
-        fontSize: "1rem",
-        padding: "10px",
-        borderRadius: "8px",
-        border: "1px solid #ccc",
-      }}
-    />
-    <View
-      name="image"
-      as="input"
-      type="file"
-      alignSelf="end"
-      accept="image/png, image/jpeg"
-      style={{
-        fontSize: "0.9rem",
-        padding: "8px",
-        margin: "1rem 0",
-        cursor: "pointer",
-        color: "#555",
-      }}
-    />
+         import { useState } from "react";
 
-    <Button
-      type="submit"
-      variation="primary"
+function PennyThoughts() {
+  // State to show/hide form
+  const [showForm, setShowForm] = useState(false);
+  const [isBold, setIsBold] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+
+  // Toggle form visibility
+  const toggleForm = () => setShowForm(!showForm);
+
+  // Handle text style for the description
+  const handleTextStyle = (style) => {
+    if (style === "bold") {
+      setIsBold(!isBold);
+    } else if (style === "italic") {
+      setIsItalic(!isItalic);
+    }
+  };
+
+  return (
+    <div
       style={{
-        padding: "12px 20px",
-        backgroundColor: "#007bff",
-        borderRadius: "8px",
-        fontSize: "1.1rem",
-        fontWeight: "bold",
-        color: "#fff",
-        border: "none",
-        cursor: "pointer",
+        maxWidth: "600px",
+        margin: "2rem auto",
+        padding: "2rem",
+        borderRadius: "12px",
+        background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+        textAlign: "center",
       }}
     >
-      Create Note
-    </Button>
-  </Flex>
-</View>
+      <Heading
+        level={1}
+        style={{
+          fontFamily: "'Pacifico', cursive",
+          fontSize: "3rem",
+          color: "#333",
+        }}
+      >
+        Penny Thoughts
+      </Heading>
+
+      <Button
+        type="button"
+        variation="primary"
+        onClick={toggleForm}
+        style={{
+          padding: "12px 20px",
+          backgroundColor: "#007bff",
+          borderRadius: "8px",
+          fontSize: "1.1rem",
+          fontWeight: "bold",
+          color: "#fff",
+          marginTop: "1.5rem",
+        }}
+      >
+        {showForm ? "Hide Note" : "Start Note"}
+      </Button>
+
+      {showForm && (
+        <View
+          as="form"
+          style={{
+            marginTop: "2rem",
+            backgroundColor: "#fff",
+            padding: "2rem",
+            borderRadius: "12px",
+            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+          }}
+          onSubmit={createNote}
+        >
+          <Flex direction="column" gap="1.5rem">
+            <TextField
+              name="name"
+              placeholder="Note Name"
+              label="Note Name"
+              labelHidden
+              variation="quiet"
+              required
+              style={{
+                fontSize: "1rem",
+                padding: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ccc",
+              }}
+            />
+
+            <div>
+              <Button
+                type="button"
+                onClick={() => handleTextStyle("bold")}
+                style={{
+                  marginRight: "10px",
+                  backgroundColor: isBold ? "#ff007a" : "#007bff",
+                }}
+              >
+                B
+              </Button>
+              <Button
+                type="button"
+                onClick={() => handleTextStyle("italic")}
+                style={{
+                  backgroundColor: isItalic ? "#ff007a" : "#007bff",
+                }}
+              >
+                I
+              </Button>
+            </div>
+
+            <textarea
+              name="description"
+              placeholder="Note Description"
+              required
+              rows="5"
+              style={{
+                fontSize: "1rem",
+                padding: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ccc",
+                resize: "both",
+                fontWeight: isBold ? "bold" : "normal",
+                fontStyle: isItalic ? "italic" : "normal",
+              }}
+            />
+
+            <View
+              name="image"
+              as="input"
+              type="file"
+              alignSelf="end"
+              accept="image/png, image/jpeg"
+              style={{
+                fontSize: "0.9rem",
+                padding: "8px",
+                margin: "1rem 0",
+                cursor: "pointer",
+                color: "#555",
+              }}
+            />
+
+            <Button
+              type="submit"
+              variation="primary"
+              style={{
+                padding: "12px 20px",
+                backgroundColor: "#ff007a",
+                borderRadius: "8px",
+                fontSize: "1.1rem",
+                fontWeight: "bold",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Penny!
+            </Button>
+          </Flex>
+        </View>
+      )}
+    </div>
+  );
+}
+
+export default PennyThoughts;
+
 
           <Divider />
           <Heading level={2}>Current Notes</Heading>
