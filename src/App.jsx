@@ -8,7 +8,6 @@ import {
   Flex,
   View,
   Image,
-  Grid,
   Divider,
 } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
@@ -179,31 +178,31 @@ export default function App() {
 
           <Divider />
           <Heading level={2}>Published Thoughts</Heading>
-          <Grid
-            margin="3rem 0"
-            autoFlow="column"
+          <Flex
+            direction="column" // Stack notes vertically
             justifyContent="center"
             gap="2rem"
-            alignContent="center"
+            width="100%" // Full width for the timeline feel
+            alignItems="center"
           >
             {notes.map((note) => (
               <Flex
                 key={note.id || note.name}
-    direction="column"
-    justifyContent="center"
-    alignItems="center"
-    gap="1.5rem"
-    padding="2rem"
-    borderRadius="10px" // Smoother rounded corners
-    backgroundColor="#f0f0f5" // Soft background color
-    boxShadow="0px 4px 12px rgba(0, 0, 0, 0.1)" // Soft shadow for depth
-    style={{
-      border: "none", // Remove border for a cleaner look
-      maxWidth: "400px", // Restrict the width for better visual alignment
-      width: "100%",
-    }}
-    className="box"
-  >
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                gap="1.5rem"
+                padding="2rem"
+                borderRadius="10px" // Smoother rounded corners
+                backgroundColor="#f0f0f5" // Soft background color
+                boxShadow="0px 4px 12px rgba(0, 0, 0, 0.1)" // Soft shadow for depth
+                style={{
+                  border: "none", // Remove border for a cleaner look
+                  maxWidth: "400px", // Restrict the width for better visual alignment
+                  width: "100%",
+                }}
+                className="box"
+              >
                 <View>
                   <Heading level="3">{note.name}</Heading>
                 </View>
@@ -211,19 +210,20 @@ export default function App() {
                 {note.image && (
                   <Image
                     src={note.image}
-                    alt={`visual aid for ${notes.name}`}
-                    style={{ width: 400 }}
+                    alt={`visual aid for ${note.name}`}
+                    style={{ width: "100%", borderRadius: "8px" }}
                   />
                 )}
                 <Button
                   variation="destructive"
                   onClick={() => deleteNote(note)}
+                  style={{ width: "100%" }}
                 >
                   Delete note
                 </Button>
               </Flex>
             ))}
-          </Grid>
+          </Flex>
           <Button onClick={signOut}>Sign Out</Button>
         </Flex>
       )}
