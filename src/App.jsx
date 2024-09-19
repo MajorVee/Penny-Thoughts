@@ -258,12 +258,6 @@ function PennyThoughts() {
             </Button>
           </Flex>
         </View>
-      )}
-    </div>
-  );
-}
-
-export default PennyThoughts;
 
 
           <Divider />
