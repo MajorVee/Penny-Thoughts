@@ -1,8 +1,6 @@
-An App to the Amplify backend and built a frontend allowing the users to create, edit, and delete notes. Users will also be able to upload an image and associate it with a note.
--
 ## Overview
 
-React application integrated with AWS Amplify, streamlined for scalability and performance, with pre-configured AWS services like Cognito, AppSync, and DynamoDB.
+Used Amplify UI component library to scaffold out an entire user authentication flow, allowing users to sign up, sign in, and reset their password with just few lines of code. Additionally, you will build an app frontend that allows users to create, update, and delete their notes. They will also be able to upload an image and associate it with a note.
 
 ## Features
 
