@@ -41,20 +41,17 @@ export default function App() {
           const linkToStorageFile = await getUrl({
             path: ({ identityId }) => `media/${identityId}/${note.image}`,
           });
-          console.log(linkToStorageFile.url);
           note.image = linkToStorageFile.url;
         }
         return note;
       })
     );
-    console.log(notes);
     setNotes(notes);
   }
 
   async function createNote(event) {
     event.preventDefault();
     const form = new FormData(event.target);
-    console.log(form.get("image").name);
 
     const { data: newNote } = await client.models.Note.create({
       name: form.get("name"),
@@ -62,29 +59,22 @@ export default function App() {
       image: form.get("image").name,
     });
 
-    console.log(newNote);
     if (newNote.image)
-      if (newNote.image)
-        await uploadData({
-          path: ({ identityId }) => `media/${identityId}/${newNote.image}`,
-
-          data: form.get("image"),
-        }).result;
+      await uploadData({
+        path: ({ identityId }) => `media/${identityId}/${newNote.image}`,
+        data: form.get("image"),
+      }).result;
 
     fetchNotes();
     event.target.reset();
   }
 
   async function deleteNote({ id }) {
-    const toBeDeletedNote = {
-      id: id,
-    };
+    const toBeDeletedNote = { id: id };
 
     const { data: deletedNote } = await client.models.Note.delete(
       toBeDeletedNote
     );
-    console.log(deletedNote);
-
     fetchNotes();
   }
 
@@ -99,102 +89,96 @@ export default function App() {
           width="70%"
           margin="0 auto"
         >
-          <Heading level={1}
-  style={{
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: "2.5rem",
-    color: "#333",
-    marginBottom: "1.5rem",
-  }}
->
-  Penny Thoughts
-</Heading>
-<View
-  as="form"
-  style={{
-    maxWidth: "600px",
-    margin: "2rem auto",
-    padding: "2rem",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "12px",
-    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-  }}
-  onSubmit={createNote}
->
-  <Flex
-    direction="column"
-    justifyContent="center"
-    gap="1.5rem"
-    padding="1.5rem"
-  >
-    <TextField
-      name="name"
-      placeholder="Note Name"
-      label="Note Name"
-      labelHidden
-      variation="quiet"
-      required
-      style={{
-        fontSize: "1rem",
-        padding: "10px",
-        borderRadius: "8px",
-        border: "1px solid #ccc",
-      }}
-    />
-    <TextField
-      name="description"
-      placeholder="Note Description"
-      label="Note Description"
-      labelHidden
-      variation="quiet"
-      required
-      style={{
-           fontSize: "1rem",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ccc",
-                resize: "both",
-                fontWeight: isBold ? "bold" : "normal",
-                fontStyle: isItalic ? "italic" : "normal",
-      }}
-    />
-    <View
-      name="image"
-      as="input"
-      type="file"
-      alignSelf="end"
-      accept="image/png, image/jpeg"
-      style={{
-        fontSize: "0.9rem",
-        padding: "8px",
-        margin: "1rem 0",
-        cursor: "pointer",
-        color: "#555",
-      }}
-    />
+          <Heading
+            level={1}
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "2.5rem",
+              color: "#333",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Penny Thoughts
+          </Heading>
 
-   <Button
-              type="submit"
-              variation="primary"
-              style={{
-                padding: "12px 20px",
-                backgroundColor: "#ff007a",
-                borderRadius: "8px",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                color: "#fff",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Penny!
-      </Button>
-  </Flex>
-</View>
+          <View
+            as="form"
+            style={{
+              maxWidth: "600px",
+              margin: "2rem auto",
+              padding: "2rem",
+              backgroundColor: "#f9f9f9",
+              borderRadius: "12px",
+              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+            }}
+            onSubmit={createNote}
+          >
+            <Flex direction="column" justifyContent="center" gap="1.5rem">
+              <TextField
+                name="name"
+                placeholder="Note Name"
+                label="Note Name"
+                labelHidden
+                variation="quiet"
+                required
+                style={{
+                  fontSize: "1rem",
+                  padding: "10px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc",
+                }}
+              />
+
+              <textarea
+                name="description"
+                placeholder="Note Description"
+                required
+                style={{
+                  fontSize: "1rem",
+                  padding: "10px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc",
+                  resize: "both", // This allows the description to be resizable
+                }}
+              />
+
+              <View
+                name="image"
+                as="input"
+                type="file"
+                alignSelf="end"
+                accept="image/png, image/jpeg"
+                style={{
+                  fontSize: "0.9rem",
+                  padding: "8px",
+                  margin: "1rem 0",
+                  cursor: "pointer",
+                  color: "#555",
+                }}
+              />
+
+              <Button
+                type="submit"
+                variation="primary"
+                style={{
+                  padding: "12px 20px",
+                  backgroundColor: "#007bff",
+                  borderRadius: "8px",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  color: "#fff",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Penny!
+              </Button>
+            </Flex>
+          </View>
 
           <Divider />
-          <Heading level={2}>Published Thoughts</Heading>
+          <Heading level={2}>Current Notes</Heading>
           <Grid
             margin="3rem 0"
             autoFlow="column"
