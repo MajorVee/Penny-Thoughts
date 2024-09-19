@@ -99,39 +99,7 @@ export default function App() {
           width="70%"
           margin="0 auto"
         >
-         import { useState } from "react";
-
-function PennyThoughts() {
-  // State to show/hide form
-  const [showForm, setShowForm] = useState(false);
-  const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
-
-  // Toggle form visibility
-  const toggleForm = () => setShowForm(!showForm);
-
-  // Handle text style for the description
-  const handleTextStyle = (style) => {
-    if (style === "bold") {
-      setIsBold(!isBold);
-    } else if (style === "italic") {
-      setIsItalic(!isItalic);
-    }
-  };
-
-  return (
-    <div
-      style={{
-        maxWidth: "600px",
-        margin: "2rem auto",
-        padding: "2rem",
-        borderRadius: "12px",
-        background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
-        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-        textAlign: "center",
-      }}
-    >
-           <Heading
+          <Heading
         level={1}
         style={{
           fontFamily: "'Pacifico', cursive",
@@ -141,51 +109,71 @@ function PennyThoughts() {
       >
         Penny Thoughts
       </Heading>
-          <View as="form" margin="3rem 0" onSubmit={createNote}>
-            <Flex
-              direction="column"
-              justifyContent="center"
-              gap="2rem"
-              padding="2rem"
-            >
-              <TextField
-                name="name"
-                placeholder="Note Name"
-                label="Note Name"
-                labelHidden
-                variation="quiet"
-                required
-                 style={{
-                fontSize: "1rem",
+<View
+  as="form"
+  style={{
+    maxWidth: "600px",
+    margin: "2rem auto",
+    padding: "2rem",
+    backgroundColor: "#f9f9f9",
+    borderRadius: "12px",
+    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+  }}
+  onSubmit={createNote}
+>
+  <Flex
+    direction="column"
+    justifyContent="center"
+    gap="1.5rem"
+    padding="1.5rem"
+  >
+    <TextField
+      name="name"
+      placeholder="Note Name"
+      label="Note Name"
+      labelHidden
+      variation="quiet"
+      required
+      style={{
+        fontSize: "1rem",
+        padding: "10px",
+        borderRadius: "8px",
+        border: "1px solid #ccc",
+      }}
+    />
+    <TextField
+      name="description"
+      placeholder="Note Description"
+      label="Note Description"
+      labelHidden
+      variation="quiet"
+      required
+      style={{
+        fontSize: "1rem",
                 padding: "10px",
                 borderRadius: "8px",
                 border: "1px solid #ccc",
-              }}
-              />
-              <TextField
-                name="description"
-                placeholder="Note Description"
-                label="Note Description"
-                labelHidden
-                variation="quiet"
-                required
-              />
-             <View
-              name="image"
-              as="input"
-              type="file"
-              alignSelf="end"
-              accept="image/png, image/jpeg"
-              style={{
-                fontSize: "0.9rem",
-                padding: "8px",
-                margin: "1rem 0",
-                cursor: "pointer",
-                color: "#555",
-              }}
-            />
+                resize: "both",
+                fontWeight: isBold ? "bold" : "normal",
+                fontStyle: isItalic ? "italic" : "normal",
+      }}
+    />
+    <View
+      name="image"
+      as="input"
+      type="file"
+      alignSelf="end"
+      accept="image/png, image/jpeg"
+      style={{
+        fontSize: "0.9rem",
+        padding: "8px",
+        margin: "1rem 0",
+        cursor: "pointer",
+        color: "#555",
+      }}
+    />
 
-                <Button
+    <Button
               type="submit"
               variation="primary"
               style={{
@@ -201,8 +189,9 @@ function PennyThoughts() {
             >
               Penny!
             </Button>
-            </Flex>
-          </View>
+  </Flex>
+</View>
+
           <Divider />
           <Heading level={2}>Current Notes</Heading>
           <Grid
