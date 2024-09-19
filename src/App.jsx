@@ -117,7 +117,7 @@ export default function App() {
             <Flex direction="column" justifyContent="center" gap="1.5rem">
               <TextField
                 name="name"
-                placeholder="Note Name"
+                placeholder="Thought Title"
                 label="Note Name"
                 labelHidden
                 variation="quiet"
@@ -132,7 +132,7 @@ export default function App() {
 
               <textarea
                 name="description"
-                placeholder="Note Description"
+                placeholder="What's on your mind?"
                 required
                 style={{
                   fontSize: "1rem",
@@ -178,7 +178,7 @@ export default function App() {
           </View>
 
           <Divider />
-          <Heading level={2}>Current Notes</Heading>
+          <Heading level={2}>Published Thoughts</Heading>
           <Grid
             margin="3rem 0"
             autoFlow="column"
@@ -189,15 +189,21 @@ export default function App() {
             {notes.map((note) => (
               <Flex
                 key={note.id || note.name}
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-                gap="2rem"
-                border="1px solid #ccc"
-                padding="2rem"
-                borderRadius="5%"
-                className="box"
-              >
+    direction="column"
+    justifyContent="center"
+    alignItems="center"
+    gap="1.5rem"
+    padding="2rem"
+    borderRadius="10px" // Smoother rounded corners
+    backgroundColor="#f0f0f5" // Soft background color
+    boxShadow="0px 4px 12px rgba(0, 0, 0, 0.1)" // Soft shadow for depth
+    style={{
+      border: "none", // Remove border for a cleaner look
+      maxWidth: "400px", // Restrict the width for better visual alignment
+      width: "100%",
+    }}
+    className="box"
+  >
                 <View>
                   <Heading level="3">{note.name}</Heading>
                 </View>
