@@ -217,9 +217,9 @@ export default function App() {
                 <Button
                   variation="destructive"
                   onClick={() => deleteNote(note)}
-                  style={{ width: "100%" }}
+                  style={{ width: "48%", backgroundColor: "#dc3545", color: "#fff" }}
                 >
-                  Delete note
+                  Delete
                 </Button>
               </Flex>
             ))}
