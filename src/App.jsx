@@ -99,43 +99,97 @@ export default function App() {
           width="70%"
           margin="0 auto"
         >
-          <Heading level={1}>My Notes App</Heading>
-          <View as="form" margin="3rem 0" onSubmit={createNote}>
-            <Flex
-              direction="column"
-              justifyContent="center"
-              gap="2rem"
-              padding="2rem"
-            >
-              <TextField
-                name="name"
-                placeholder="Note Name"
-                label="Note Name"
-                labelHidden
-                variation="quiet"
-                required
-              />
-              <TextField
-                name="description"
-                placeholder="Note Description"
-                label="Note Description"
-                labelHidden
-                variation="quiet"
-                required
-              />
-              <View
-                name="image"
-                as="input"
-                type="file"
-                alignSelf={"end"}
-                accept="image/png, image/jpeg"
-              />
+          <Heading level={1}
+  style={{
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "2.5rem",
+    color: "#333",
+    marginBottom: "1.5rem",
+  }}
+>
+  Penny Thoughts
+</Heading>
+<View
+  as="form"
+  style={{
+    maxWidth: "600px",
+    margin: "2rem auto",
+    padding: "2rem",
+    backgroundColor: "#f9f9f9",
+    borderRadius: "12px",
+    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+  }}
+  onSubmit={createNote}
+>
+  <Flex
+    direction="column"
+    justifyContent="center"
+    gap="1.5rem"
+    padding="1.5rem"
+  >
+    <TextField
+      name="name"
+      placeholder="Note Name"
+      label="Note Name"
+      labelHidden
+      variation="quiet"
+      required
+      style={{
+        fontSize: "1rem",
+        padding: "10px",
+        borderRadius: "8px",
+        border: "1px solid #ccc",
+      }}
+    />
+    <TextField
+      name="description"
+      placeholder="Note Description"
+      label="Note Description"
+      labelHidden
+      variation="quiet"
+      required
+      style={{
+        fontSize: "1rem",
+        padding: "10px",
+        borderRadius: "8px",
+        border: "1px solid #ccc",
+      }}
+    />
+    <View
+      name="image"
+      as="input"
+      type="file"
+      alignSelf="end"
+      accept="image/png, image/jpeg"
+      style={{
+        fontSize: "0.9rem",
+        padding: "8px",
+        margin: "1rem 0",
+        cursor: "pointer",
+        color: "#555",
+      }}
+    />
 
-              <Button type="submit" variation="primary">
-                Create Note
-              </Button>
-            </Flex>
-          </View>
+    <Button
+      type="submit"
+      variation="primary"
+      style={{
+        padding: "12px 20px",
+        backgroundColor: "#007bff",
+        borderRadius: "8px",
+        fontSize: "1.1rem",
+        fontWeight: "bold",
+        color: "#fff",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      Create Note
+    </Button>
+  </Flex>
+</View>
+
           <Divider />
           <Heading level={2}>Current Notes</Heading>
           <Grid
