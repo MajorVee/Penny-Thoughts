@@ -113,12 +113,11 @@ export default function App() {
 <View
   as="form"
   style={{
-    maxWidth: "600px",
-    margin: "2rem auto",
-    padding: "2rem",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "12px",
-    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+    marginTop: "2rem",
+            backgroundColor: "#fff",
+            padding: "2rem",
+            borderRadius: "12px",
+            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
   }}
   onSubmit={createNote}
 >
@@ -150,10 +149,13 @@ export default function App() {
       variation="quiet"
       required
       style={{
-        fontSize: "1rem",
-        padding: "10px",
-        borderRadius: "8px",
-        border: "1px solid #ccc",
+            fontSize: "1rem",
+                padding: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ccc",
+                resize: "both",
+                fontWeight: isBold ? "bold" : "normal",
+                fontStyle: isItalic ? "italic" : "normal",
       }}
     />
     <View
@@ -171,22 +173,22 @@ export default function App() {
       }}
     />
 
-    <Button
-      type="submit"
-      variation="primary"
-      style={{
-        padding: "12px 20px",
-        backgroundColor: "#007bff",
-        borderRadius: "8px",
-        fontSize: "1.1rem",
-        fontWeight: "bold",
-        color: "#fff",
-        border: "none",
-        cursor: "pointer",
-      }}
-    >
-      Create Note
-    </Button>
+   <Button
+              type="submit"
+              variation="primary"
+              style={{
+                padding: "12px 20px",
+                backgroundColor: "#ff007a",
+                borderRadius: "8px",
+                fontSize: "1.1rem",
+                fontWeight: "bold",
+                color: "#fff",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Penny!
+            </Button>
   </Flex>
 </View>
 
