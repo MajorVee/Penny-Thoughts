@@ -99,16 +99,17 @@ export default function App() {
           width="70%"
           margin="0 auto"
         >
-          <Heading
-        level={1}
-        style={{
-          fontFamily: "'Pacifico', cursive",
-          fontSize: "3rem",
-          color: "#333",
-        }}
-      >
-        Penny Thoughts
-      </Heading>
+          <Heading level={1}
+  style={{
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "2.5rem",
+    color: "#333",
+    marginBottom: "1.5rem",
+  }}
+>
+  Penny Thoughts
+</Heading>
 <View
   as="form"
   style={{
@@ -150,12 +151,9 @@ export default function App() {
       required
       style={{
         fontSize: "1rem",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ccc",
-                resize: "both",
-                fontWeight: isBold ? "bold" : "normal",
-                fontStyle: isItalic ? "italic" : "normal",
+        padding: "10px",
+        borderRadius: "8px",
+        border: "1px solid #ccc",
       }}
     />
     <View
@@ -174,21 +172,21 @@ export default function App() {
     />
 
     <Button
-              type="submit"
-              variation="primary"
-              style={{
-                padding: "12px 20px",
-                backgroundColor: "#ff007a",
-                borderRadius: "8px",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                color: "#fff",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Penny!
-            </Button>
+      type="submit"
+      variation="primary"
+      style={{
+        padding: "12px 20px",
+        backgroundColor: "#007bff",
+        borderRadius: "8px",
+        fontSize: "1.1rem",
+        fontWeight: "bold",
+        color: "#fff",
+        border: "none",
+        cursor: "pointer",
+      }}
+    >
+      Create Note
+    </Button>
   </Flex>
 </View>
 
