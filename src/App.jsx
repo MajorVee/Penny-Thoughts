@@ -217,7 +217,6 @@ export default function App() {
                 <Button
   onClick={() => deleteNote(note)}
   style={{
-    width: "48%",
     background: "linear-gradient(135deg, #ff6b6b, #f06595)", // Gradient background
     color: "#fff",
     border: "none",
@@ -228,6 +227,9 @@ export default function App() {
     cursor: "pointer",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Soft shadow
     transition: "background 0.3s ease, transform 0.2s ease", // Smooth transition
+    width: "auto", // Adjust width to fit content
+    minWidth: "150px", // Minimum width to ensure the button doesn’t become too narrow
+    textAlign: "center" // Center text inside button
   }}
   onMouseOver={(e) => {
     e.currentTarget.style.background = "linear-gradient(135deg, #ff5252, #e83e8c)"; // Darker gradient on hover
