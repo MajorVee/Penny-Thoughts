@@ -131,7 +131,7 @@ function PennyThoughts() {
         textAlign: "center",
       }}
     >
-      <Heading
+           <Heading
         level={1}
         style={{
           fontFamily: "'Pacifico', cursive",
@@ -141,91 +141,36 @@ function PennyThoughts() {
       >
         Penny Thoughts
       </Heading>
-
-      <Button
-        type="button"
-        variation="primary"
-        onClick={toggleForm}
-        style={{
-          padding: "12px 20px",
-          backgroundColor: "#007bff",
-          borderRadius: "8px",
-          fontSize: "1.1rem",
-          fontWeight: "bold",
-          color: "#fff",
-          marginTop: "1.5rem",
-        }}
-      >
-        {showForm ? "Hide Note" : "Start Note"}
-      </Button>
-
-      {showForm && (
-        <View
-          as="form"
-          style={{
-            marginTop: "2rem",
-            backgroundColor: "#fff",
-            padding: "2rem",
-            borderRadius: "12px",
-            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-          }}
-          onSubmit={createNote}
-        >
-          <Flex direction="column" gap="1.5rem">
-            <TextField
-              name="name"
-              placeholder="Note Name"
-              label="Note Name"
-              labelHidden
-              variation="quiet"
-              required
-              style={{
+          <View as="form" margin="3rem 0" onSubmit={createNote}>
+            <Flex
+              direction="column"
+              justifyContent="center"
+              gap="2rem"
+              padding="2rem"
+            >
+              <TextField
+                name="name"
+                placeholder="Note Name"
+                label="Note Name"
+                labelHidden
+                variation="quiet"
+                required
+                 style={{
                 fontSize: "1rem",
                 padding: "10px",
                 borderRadius: "8px",
                 border: "1px solid #ccc",
               }}
-            />
-
-            <div>
-              <Button
-                type="button"
-                onClick={() => handleTextStyle("bold")}
-                style={{
-                  marginRight: "10px",
-                  backgroundColor: isBold ? "#ff007a" : "#007bff",
-                }}
-              >
-                B
-              </Button>
-              <Button
-                type="button"
-                onClick={() => handleTextStyle("italic")}
-                style={{
-                  backgroundColor: isItalic ? "#ff007a" : "#007bff",
-                }}
-              >
-                I
-              </Button>
-            </div>
-
-            <textarea
-              name="description"
-              placeholder="Note Description"
-              required
-              rows="5"
-              style={{
-                fontSize: "1rem",
-                padding: "10px",
-                borderRadius: "8px",
-                border: "1px solid #ccc",
-                resize: "both",
-                fontWeight: isBold ? "bold" : "normal",
-                fontStyle: isItalic ? "italic" : "normal",
-              }}
-            />
-
-            <View
+              />
+              <TextField
+                name="description"
+                placeholder="Note Description"
+                label="Note Description"
+                labelHidden
+                variation="quiet"
+                required
+              />
+             <View
               name="image"
               as="input"
               type="file"
@@ -240,7 +185,7 @@ function PennyThoughts() {
               }}
             />
 
-            <Button
+                <Button
               type="submit"
               variation="primary"
               style={{
@@ -256,10 +201,8 @@ function PennyThoughts() {
             >
               Penny!
             </Button>
-          </Flex>
-        </View>
-
-
+            </Flex>
+          </View>
           <Divider />
           <Heading level={2}>Current Notes</Heading>
           <Grid
