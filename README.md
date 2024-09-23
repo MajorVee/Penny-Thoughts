@@ -8,12 +8,17 @@ Used Amplify UI component library to scaffold out an entire user authentication 
 - **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
 - **Database**: Real-time database powered by Amazon DynamoDB.
 ----
-Setup & Configurations
+**Setup & Configurations**
+
 Create a new React app npx create-react-app my-notes-app
    
-Install dependencies: Navigate to your project directory with cd my-notes-app command` and install AWS Amplify.
+**Install dependencies**
 
-Amplify Configuration: Configure Amplify with your AWS account details. Create an aws-config.js file in your src directory with the following configuration, replacing the placeholders with your actual AWS settings.
+Navigate to your project directory with cd my-notes-app command` and install AWS Amplify.
+
+**Amplify Configuration**
+
+Configure Amplify with your AWS account details. Create an aws-config.js file in your src directory with the following configuration, replacing the placeholders with your actual AWS settings.
   
 Initialize Amplify after customize the .css
 
