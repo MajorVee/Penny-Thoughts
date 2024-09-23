@@ -7,7 +7,7 @@ Used Amplify UI component library to scaffold out an entire user authentication 
 - **Authentication**: Setup with Amazon Cognito for secure user authentication.
 - **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
 - **Database**: Real-time database powered by Amazon DynamoDB.
-
+----
 Setup & Configurations
 Create a new React app npx create-react-app my-notes-app
    
